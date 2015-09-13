@@ -135,6 +135,9 @@ Also note that in the index page, we have removed `post.content`, as the content
 
 Now when we hit the url, we'll see the post rendered into a layout as it should be. You'll see the special property `post._url` as mentioned earlier, which simply prints a path to the post, including the deep-nesting if present. You might have also noticed the special `_content` key being set to false in the post file. This will just remove `post.content`, since we are no longer using it, and the full post contents with the full layout times a bunch of posts can be a very lengthy unused value. While you certainly can get away with not including this special key, if you are not planning on using `post.contents` on your index page, it's recommended that you just cut it for cleanliness and speed.
 
+#### Limitation of single post views
+Single post views have a limitation in that they (and their parents in view inheritance) do not have access to the full list of content. This is due to the fact that other content may not have finished rendering yet, when you begin to render your single view. This is a common "gotcha" to watch out for. One solution may be to X.
+
 ### Exporting Dynamic Content as JSON
 
 For some use cases, you may want to have your dynamic content available to be accessed by javascript in reaction to a user's action. For example, you might want to load your first five blog posts onto the index, but wait until the user hits "next page" to load in the rest. There are two ways you can do this.
